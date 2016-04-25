@@ -78,8 +78,8 @@ def launchBootstraps():
         sys.stderr.flush()
 
     processes = []
-    for _ in range(worker_amount):
-        command = [sys.executable, "-m", BOOTSTRAP_MODULE] + args
+    for i in range(worker_amount):
+        command = [sys.executable, "-m", BOOTSTRAP_MODULE, "--idx", str(i)] + args
         if verbosity >= 3:
             sys.stderr.write("Executing '{0}'...\n".format(command))
             sys.stderr.flush()

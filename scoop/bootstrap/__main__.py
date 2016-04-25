@@ -115,6 +115,9 @@ class Bootstrap(object):
         self.parser.add_argument('--metaPort',
                                  help="The port of the broker meta socket",
                                  type=int)
+        self.parser.add_argument('--idx',
+                                 help="The index of the worker on host",
+                                 type=int)
         self.parser.add_argument('--size',
                                  help="The size of the worker pool",
                                  type=int,
@@ -170,6 +173,7 @@ class Bootstrap(object):
         )
         scoop.SIZE = self.args.size
         scoop.DEBUG = self.args.debug
+        scoop.WORKER_ON_HOST_INDEX = self.args.idx
         scoop.MAIN_MODULE = self.args.executable
         scoop.CONFIGURATION = {
           'headless': not bool(self.args.executable),
